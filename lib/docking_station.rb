@@ -12,5 +12,10 @@ class DockingStation
   end
 
   def dock_bike(bike)
+    bikes << bike
+  end
+
+  def bike_docked?
+    !bikes.empty?
   end
 end
