@@ -2,6 +2,7 @@ require 'docking_station'
 
 describe DockingStation do
   let(:bikes) { subject.bikes }
+  let(:bike) { Bike.new }
   let(:docking_station) { subject }
 
   describe '#release_bike' do
@@ -19,7 +20,6 @@ describe DockingStation do
       subject(:bike) { DockingStation.new.release_bike }
 
       it { is_expected.to be_an_instance_of Bike }
-
       it { is_expected.to be_working }
     end
   end
@@ -30,17 +30,17 @@ describe DockingStation do
       expect(subject).to respond_to(:dock_bike).with(1)
     end
 
-    it 'stores bike in bikes' do
-      count = bikes.count
-      subject.dock_bike(bike)
-      expect(bikes.count).to eq(count + 1)
+    context 'when capacity is full' do
+      it 'raises exception' do
+        allow(docking_station).to receive(:bikes) { [Bike.new] }
+        expect { docking_station.dock_bike(bike) }.to raise_error 'Capacity full'
+      end
     end
 
-    it 'stores bike when we have bikes already docked' do
-      5.times { subject.dock_bike(bike) }
-      count = bikes.count
+    it 'stores bike in bikes' do
+      bikes.clear
       subject.dock_bike(bike)
-      expect(bikes.count).to eq(count + 1)
+      expect(bikes.count).to eq 1
     end
   end
 
