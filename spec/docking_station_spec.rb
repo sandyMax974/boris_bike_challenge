@@ -2,11 +2,18 @@ require 'docking_station'
 
 describe DockingStation do
   let(:bikes) { subject.bikes }
+  let(:docking_station) { subject }
 
   describe '#release_bike' do
     it 'should respond_to release_bike' do
       expect(subject).to respond_to :release_bike
     end
+
+    it 'prompt error to user when bike array is empty' do
+      docking_station.bikes.clear
+      expect {docking_station.release_bike}.to raise_error("no bikes available")
+    end
+
 
     context 'object released from release_bike' do
       subject(:bike) { DockingStation.new.release_bike }
@@ -45,7 +52,8 @@ describe DockingStation do
 
   describe '#bike_docked?' do
     it 'returns false if bikes is empty' do
-      expect(subject.bike_docked?).to be false
+      docking_station.bikes.clear
+      expect(docking_station.bike_docked?).to be false
     end
   end
 end

@@ -4,11 +4,12 @@ class DockingStation
   attr_reader :bikes
 
   def initialize
-    @bikes = []
+    @bikes = [Bike.new]
   end
 
   def release_bike
-    Bike.new
+    raise "no bikes available" unless bike_docked?
+    bikes.first
   end
 
   def dock_bike(bike)
