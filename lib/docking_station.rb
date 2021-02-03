@@ -4,7 +4,7 @@ class DockingStation
   attr_reader :bikes
 
   def initialize
-    @bikes = [Bike.new]
+    @bikes = []
   end
 
   def release_bike
@@ -22,7 +22,11 @@ class DockingStation
   end
 
   def capacity_error
-    raise 'Capacity full' if bike_docked?
+    raise 'Capacity full' if capacity_check?
+  end
+
+  def capacity_check?
+    bikes.count >= 20
   end
 
   def bike_docked?
