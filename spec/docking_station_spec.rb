@@ -1,11 +1,12 @@
 require 'docking_station'
 
 describe DockingStation do
-  let(:bikes) { subject.bikes }
   let(:bike) { Bike.new }
   let(:docking_station) { subject }
 
   describe '#release_bike' do
+    before(:example) { docking_station.bikes << bike }
+
     it 'should respond_to release_bike' do
       expect(subject).to respond_to :release_bike
     end
@@ -25,7 +26,9 @@ describe DockingStation do
   end
 
   describe '#dock_bike' do
+    before(:example) { docking_station.bikes.clear }
     let(:bike) { instance_double(Bike) }
+
     it 'should respond_to dock_bike with an argument' do
       expect(subject).to respond_to(:dock_bike).with(1)
     end
@@ -39,26 +42,24 @@ describe DockingStation do
 
     context 'when capacity is not full' do
       it 'doesnt raise error' do
-        docking_station.bikes.clear
         allow(docking_station).to receive(:bikes) { Array.new(19) {Bike.new} }
         expect { docking_station.dock_bike(bike) }.to_not raise_error
       end
     end
 
     it 'stores bike in bikes' do
-      bikes.clear
       subject.dock_bike(bike)
-      expect(bikes.count).to eq 1
+      expect(docking_station.bikes.count).to eq 1
     end
   end
 
   describe '#bikes' do
     it 'should display the bikes instance variable' do
-      expect(bikes).to be_an_instance_of Array
+      expect(docking_station.bikes).to be_an_instance_of Array
     end
 
     it 'should be empty on initialization' do
-      expect(bikes).to be_empty
+      expect(docking_station.bikes).to be_empty
     end
   end
 
