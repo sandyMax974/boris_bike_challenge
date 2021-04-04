@@ -3,8 +3,8 @@ class DockingStation
 
   DEFAULT = 20
 
-  def initialize
-    @capacity = DEFAULT
+  def initialize(capacity = DEFAULT)
+    @capacity = capacity
     @docking_bay = []
   end
 
@@ -28,7 +28,7 @@ class DockingStation
 
 
   # setter method
-  def modify_capacity(capacity)
+  def modify_capacity=(capacity)
     @capacity = capacity
   end
 

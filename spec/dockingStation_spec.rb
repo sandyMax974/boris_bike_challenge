@@ -45,7 +45,7 @@ describe DockingStation do
 
   describe "#modify_capacity" do
     it "modifies the docking station capacity to the specifies integer" do
-      subject.modify_capacity(10)
+      subject.modify_capacity=(10)
       expect(subject.capacity).to eq 10 
     end
   end
