@@ -4,13 +4,18 @@ describe DockingStation do
 
   describe "#release_bike" do
     it "should remove a bike from the docking bay" do
-      bike = double("Bike")
+      bike = double("Bike", :working? => true)
       subject.dock_bike(bike)
       expect{ subject.release_bike }.to change{ subject.docking_bay.count }.by(-1)
     end
     it "should not release a bike if there are none" do
       error = "No bikes available at docking"
       expect{ subject.release_bike }.to raise_error(error)
+    end
+    it "should not release a bike if it is broken" do
+      bike = double("Bike", :working? => false)
+      subject.dock_bike(bike)
+      expect(subject.release_bike).to be_nil
     end
   end
 

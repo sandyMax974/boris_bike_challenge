@@ -1,3 +1,5 @@
+require_relative 'bike'
+
 class DockingStation
   attr_reader :docking_bay, :capacity
 
@@ -10,7 +12,7 @@ class DockingStation
 
   def release_bike
     no_bike_available_error unless has_bikes?
-    dockingbay.pop
+    dockingbay.delete_at(find_bike) if !find_bike.nil?
   end
 
   def dock_bike(bike)
@@ -26,7 +28,6 @@ class DockingStation
     dockingbay_count >= @capacity
   end
 
-
   # setter method
   def modify_capacity=(capacity)
     @capacity = capacity
@@ -36,8 +37,9 @@ class DockingStation
     bike.broken
   end
 
+
   private
-  
+
   def dockingbay
     @docking_bay
   end
@@ -52,5 +54,10 @@ class DockingStation
 
   def dockingbay_count
     @docking_bay.count
+  end
+
+  def find_bike
+    selected_bike = @docking_bay.find(&:working?)
+    @docking_bay.index(selected_bike)
   end
 end

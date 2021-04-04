@@ -9,7 +9,7 @@ describe Bike do
   end
 
   describe "#broken" do
-    it "change the biek status to broken" do
+    it "change the bike status to broken" do
       subject.broken
       expect(subject.broken).to be true
     end
