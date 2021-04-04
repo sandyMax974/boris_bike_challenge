@@ -7,4 +7,9 @@ class Bike
   def working?
     !@broken
   end
+
+  def broken
+    @broken = true
+  end
+
 end 

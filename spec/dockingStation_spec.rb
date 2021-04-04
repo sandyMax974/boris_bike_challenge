@@ -49,4 +49,12 @@ describe DockingStation do
       expect(subject.capacity).to eq 10 
     end
   end
+
+  describe "#report_broken" do
+    it "change the broken status of the returned bike" do
+      bike = double("Bike")
+      expect(bike).to receive(:broken)
+      subject.report_broken(bike)
+    end
+  end
 end

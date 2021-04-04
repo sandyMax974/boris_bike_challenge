@@ -32,6 +32,10 @@ class DockingStation
     @capacity = capacity
   end
 
+  def report_broken(bike)
+    bike.broken
+  end
+
   private
   
   def dockingbay
