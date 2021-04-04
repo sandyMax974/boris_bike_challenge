@@ -1,5 +1,6 @@
 class DockingStation
-  attr_reader :docking_bay
+  attr_reader :docking_bay, :capacity
+
   DEFAULT = 20
 
   def initialize
@@ -25,6 +26,11 @@ class DockingStation
     dockingbay_count >= @capacity
   end
 
+
+  # setter method
+  def modify_capacity(capacity)
+    @capacity = capacity
+  end
 
   private
   
