@@ -102,3 +102,11 @@ $ pry
 ```
 
 ## Programming concepts applied
+
+* Domain Modelling
+* Encapsulation and cohesion
+* Single Responsability Principle
+* Private methods
+* Method argument
+* TTD cycle (RGR)
+* Isolated unit test using stubs and mocks
