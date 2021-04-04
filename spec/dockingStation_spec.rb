@@ -20,10 +20,19 @@ describe DockingStation do
   end
 
   describe "#dock_bike" do
-    it "should add a bike to the docking bay" do
-      bike = double("Bike")
-      expect{ subject.dock_bike(bike) }.to change{ subject.docking_bay.count }.by(1)
-      expect(subject.docking_bay).to include(bike)
+    context "when the docked bike is working" do
+      it "should add a bike to the docking bay" do
+        bike_working = double("Bike", :working? => true)
+        expect{ subject.dock_bike(bike_working) }.to change{ subject.docking_bay.count }.by(1)
+        expect(subject.docking_bay).to include(bike_working)
+      end
+    end
+    context "when the docked bike is broken" do
+      it "should add a bike to the docking bay" do
+        bike_broken = double("Bike", :working? => false)
+        expect{ subject.dock_bike(bike_broken) }.to change{ subject.docking_bay.count }.by(1)
+        expect(subject.docking_bay).to include(bike_broken)
+      end
     end
   end
 
