@@ -1,4 +1,5 @@
 require_relative 'bike'
+require_relative 'van'
 
 class DockingStation
   attr_reader :docking_bay, :capacity
@@ -37,9 +38,11 @@ class DockingStation
     bike.broken
   end
 
+  def remove_broken_bike
+    dockingbay.delete_if { |bike| !bike.working? }
+  end
 
-  private
-
+private
   def dockingbay
     @docking_bay
   end
@@ -60,4 +63,6 @@ class DockingStation
     selected_bike = @docking_bay.find(&:working?)
     @docking_bay.index(selected_bike)
   end
+
+
 end

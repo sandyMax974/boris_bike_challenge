@@ -122,6 +122,7 @@
       "/Users/admin/Projects/makers/week_1/boris_bikes/lib/dockingStation.rb": {
         "lines": [
           1,
+          1,
           null,
           1,
           1,
@@ -160,9 +161,11 @@
           1,
           null,
           null,
+          1,
+          0,
+          null,
           null,
           1,
-          null,
           1,
           31,
           null,
@@ -183,10 +186,54 @@
           3,
           3,
           null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/admin/Projects/makers/week_1/boris_bikes/lib/van.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null,
+          1,
+          6,
+          2,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/admin/Projects/makers/week_1/boris_bikes/spec/van_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          4,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       }
     },
-    "timestamp": 1617549479
+    "timestamp": 1617554244
   }
 }

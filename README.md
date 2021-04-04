@@ -82,7 +82,8 @@ I'd like vans to collect working bikes from garages and distribute them to docki
 
 | Object   | Garage | Data Type | Dependency |
 | -------- | ------- | ------ | ---------- |
-| Attributes  | @garage | array |
+| Attributes  | @garage | array | |
+| Methods     | #fix_bike |   |   |
 
 | Object   | Van | Data Type | Dependency |
 | -------- | ------- | ------ | ---------- |
@@ -90,3 +91,14 @@ I'd like vans to collect working bikes from garages and distribute them to docki
 |          | #deliver_broken_bikes | Garage |
 |          | #collect_working_bikes | Garage |
 |          | #deliver_working_bikes | DockingStation |
+
+## How to run
+```
+$ git clone git@github.com:sandyMax974/boris_bike_challenge.git
+$ cd boris_bike_challenge
+$ bundle install
+$ pry
+[1] pry(main)> require './lib/dockingStation.rb'
+```
+
+## Programming concepts applied
