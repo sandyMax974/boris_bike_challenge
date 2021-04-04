@@ -1,15 +1,19 @@
 class DockingStation
   attr_reader :docking_bay
+  DEFAULT = 20
 
   def initialize
+    @capacity = DEFAULT
     @docking_bay = []
   end
 
   def release_bike
+    no_bike_available_error unless has_bikes?
     dockingbay.pop
   end
 
   def dock_bike(bike)
+    no_dock_available_error unless !at_capacity?
     dockingbay.push(bike)
   end
 
@@ -17,10 +21,26 @@ class DockingStation
     !dockingbay.empty?
   end
 
+  def at_capacity?
+    dockingbay_count >= @capacity
+  end
+
+
   private
   
   def dockingbay
     @docking_bay
   end
 
+  def no_bike_available_error
+    fail "No bikes available at docking"
+  end
+
+  def no_dock_available_error
+    fail "No space available at docking"
+  end
+
+  def dockingbay_count
+    @docking_bay.count
+  end
 end
