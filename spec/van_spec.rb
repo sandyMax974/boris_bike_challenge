@@ -64,13 +64,15 @@ describe Van do
       allow(docking_one).to receive(:at_capacity?)
       expect{ subject.distribute_working_bikes(docking_one) }.to change{ subject.storage.count }.by(-2)
     end
-    it "stops delivering bikes to docking_bay if docking is full" do
+    xit "stops delivering bikes to docking_bay if docking is full" do
       bike_working_one = double("Bike_one", :working? => true)
       docking_one = double("DockingStation", :docking_bay => [], :at_capacity? => true)
       subject.storage << bike_working_one
       allow(docking_one).to receive(:receive_working_bikes)
-      # allow(docking_one).to receive(:at_capacity?).and_return(true)
+      allow(docking_one).to receive(:at_capacity?).and_return(true)
+
       expect{ subject.distribute_working_bikes(docking_one) }.not_to change{ subject.storage.count }
+
     end  
   end
 end

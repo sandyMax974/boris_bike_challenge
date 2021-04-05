@@ -30,7 +30,6 @@ class DockingStation
     dockingbay_count >= @capacity
   end
 
-  # setter method
   def modify_capacity=(capacity)
     @capacity = capacity
   end
@@ -46,8 +45,9 @@ class DockingStation
   def receive_working_bikes(bike)
     @docking_bay << bike if bike.working? && !at_capacity?
   end
-
+  
 private
+
   def dockingbay
     @docking_bay
   end
@@ -68,6 +68,4 @@ private
     selected_bike = @docking_bay.find(&:working?)
     @docking_bay.index(selected_bike)
   end
-
-
 end

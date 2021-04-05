@@ -21,9 +21,17 @@ attr_reader :storage
   end 
 
   def distribute_working_bikes(docking_station)
-    @storage.each do |bike| 
-      docking_station.receive_working_bikes(bike) if !docking_station.at_capacity?
+    i = 0
+    while i < @storage.length do
+      break if docking_station.at_capacity?
+      docking_station.receive_working_bikes(@storage[i])
+      i += 1
     end
+
+    # @storage.each do |bike| 
+    #   break if docking_station.at_capacity?
+    #   docking_station.receive_working_bikes(bike)
+    # end
     remove_fixed_bikes
   end
 
