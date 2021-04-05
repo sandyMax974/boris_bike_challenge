@@ -44,7 +44,7 @@ class DockingStation
   end
 
   def receive_working_bikes(bike)
-    @docking_bay << bike if bike.working?
+    @docking_bay << bike if bike.working? && !at_capacity?
   end
 
 private
