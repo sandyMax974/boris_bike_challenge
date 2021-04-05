@@ -4,8 +4,20 @@
 ![version-2.6.5](https://img.shields.io/badge/version-2.6.5-lightgrey)
 ![coverage-score](https://img.shields.io/badge/coverage-100%25-success)
 
-## Motivation
+## Description
 The Boris Bikes programme will emulate emulate all the docking stations, bikes, and infrastructure (repair staff, and so on) required to make their dream a reality.
+
+## Programming concepts applied
+
+This challenge focus is to apply basic programming principles and write well-isolated test suites, follwing industry best practice.
+
+* Domain Modelling
+* Encapsulation and cohesion
+* Single Responsability Principle
+* Private methods
+* Method argument
+* TTD cycle (RGR)
+* Isolated unit test using stubs and mocks
 
 ## User Stories
 ```
@@ -55,7 +67,7 @@ I'd like docking stations to accept returning bikes (broken or not) √
 
 As a maintainer of the system,
 So that I can manage broken bikes and not disappoint users,
-I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed.
+I'd like vans to take broken bikes from docking stations and deliver them to garages to be fixed √
 
 As a maintainer of the system,
 So that I can manage broken bikes and not disappoint users,
@@ -100,13 +112,3 @@ $ bundle install
 $ pry
 [1] pry(main)> require './lib/dockingStation.rb'
 ```
-
-## Programming concepts applied
-
-* Domain Modelling
-* Encapsulation and cohesion
-* Single Responsability Principle
-* Private methods
-* Method argument
-* TTD cycle (RGR)
-* Isolated unit test using stubs and mocks

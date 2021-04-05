@@ -37,4 +37,13 @@ describe Van do
     end
   end
 
+  describe "collect_working_bikes" do
+    it "adds the working bikes to the van storage" do
+      bike_fixed_one = double("Bike_one", :working? => true)
+      garage = double("Garage", :fixed_storage => [])
+      garage.fixed_storage << bike_fixed_one
+
+      expect{ subject.collect_working_bikes(garage) }.to change{ subject.storage.count }.by(1)
+    end
+  end
 end

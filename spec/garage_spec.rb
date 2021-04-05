@@ -17,8 +17,20 @@ describe Garage do
   describe "#repair_bike" do
     it "calls the fixing method on the bike" do
       bike_broken = double("Bike", :working? => false) 
+      subject.broken_storage << bike_broken
       expect(bike_broken).to receive(:fixing)
-      subject.repair_bike(bike_broken)
+      subject.repair_bikes
+    end
+    it "moves the repaired bikes in the fixed storage" do
+      bike_broken = double("Bike", :working? => false) 
+      subject.broken_storage << bike_broken
+      p subject
+      
+      expect(subject.fixed_storage).to include(bike_broken)
+      p subject
+      expect(subject.broken_storage).not_to include(bike_broken)
+      subject.repair_bikes
+      p subject
     end
   end 
 

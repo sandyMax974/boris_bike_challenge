@@ -12,8 +12,9 @@ class Garage
     @fixed_storage
   end
 
-  def repair_bike(bike)
-    bike.fixing
+  def repair_bikes
+    @broken_storage.each { |bike| @fixed_storage << bike.fixing }
+    @broken_storage.clear
   end
 
   def receive_broken_bikes(bike)
