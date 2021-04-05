@@ -1,8 +1,8 @@
 # Boris Bikes Challenge
 
-![language-ruby](https://img.shields.io/badge/language-ruby-red)
-![version-2.6.5](https://img.shields.io/badge/version-2.6.5-lightgrey)
-![coverage-score](https://img.shields.io/badge/coverage-100%25-success)
+![language-ruby](https://img.shields.io/badge/Language-ruby%202.6.5-red)
+![coverage-score](https://img.shields.io/badge/Current%20coverage-98%25-success)
+![test-RSpec](https://img.shields.io/badge/Test-RSpec-informational)
 
 ## Description
 The Boris Bikes programme will emulate emulate all the docking stations, bikes, and infrastructure (repair staff, and so on) required to make their dream a reality.
