@@ -55,12 +55,19 @@ describe Van do
   end
 
   describe "#distribute_working_bikes" do
-    xit "removes the broken bikes from the van storage" do
-      bike_broken_one = double("Bike_one", :working? => false)
-      bike_broken_two = double("Bike_two", :working? => false)
+    it "removes the working bikes from the van storage" do
+      bike_working_one = double("Bike_one", :working? => true)
+      bike_working_two = double("Bike_two", :working? => true)
       docking_one = double("DockingStation", :docking_bay => [])
-      subject.storage << bike_broken_one << bike_broken_two
+      subject.storage << bike_working_one << bike_working_two
+      allow(docking_one).to receive(:receive_working_bikes)
       expect{ subject.distribute_working_bikes(docking_one) }.to change{ subject.storage.count }.by(-2)
     end
+    it "stops delivering bikes to docking_bay if docking is full" do
+      bike_working_one = double("Bike_one", :working? => true)
+      docking_one = double("DockingStation", :docking_bay => [], :at_capacity => true)
+      subject.storage << bike_working_one
+      expect{ subject.distribute_working_bikes(docking_one) }.not_to change{ subject.storage.count }
+    end  
   end
 end

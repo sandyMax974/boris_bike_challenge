@@ -71,4 +71,14 @@ describe DockingStation do
       subject.report_broken(bike)
     end
   end
+
+  describe "#remove_broken_bikes" do
+  end
+
+  describe "#receive_working_bikes" do
+    it "adds working bikes to the docking_bay" do
+      bike = double("Bike", :working? => true)
+      expect{ subject.receive_working_bikes(bike) }.to change{ subject.docking_bay.count}.by(1)
+    end
+  end
 end

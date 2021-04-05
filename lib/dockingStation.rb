@@ -43,6 +43,9 @@ class DockingStation
     dockingbay.delete_if { |bike| !bike.working? }
   end
 
+  def receive_working_bikes(bike)
+    @docking_bay << bike if bike.working?
+  end
 
 private
   def dockingbay
