@@ -2,7 +2,7 @@ require 'van'
 
 describe Van do
   
-  describe "collect_broken_bikes" do
+  describe "#collect_broken_bikes" do
     it "add the broken bikes to the van storage" do
       bike_broken = double("Bike", :working? => false)
       bike_working = double("Bike", :working? => true)
@@ -18,7 +18,7 @@ describe Van do
     end
   end
 
-  describe "deliver_broken_bikes" do
+  describe "#deliver_broken_bikes" do
     it "remove the broken bikesfrom the van storage" do
       bike_broken_one = double("Bike_one", :working? => false)
       bike_broken_two = double("Bike_two", :working? => false)
@@ -37,13 +37,30 @@ describe Van do
     end
   end
 
-  describe "collect_working_bikes" do
+  describe "#collect_working_bikes" do
     it "adds the working bikes to the van storage" do
       bike_fixed_one = double("Bike_one", :working? => true)
       garage = double("Garage", :fixed_storage => [])
       garage.fixed_storage << bike_fixed_one
-
+      allow(garage).to receive(:remove_fixed_bikes)
       expect{ subject.collect_working_bikes(garage) }.to change{ subject.storage.count }.by(1)
+    end
+    it "removes the working bikes from the garage fixed storage" do
+      bike_fixed_one = double("Bike_one", :working? => true)
+      garage = double("Garage", :fixed_storage => [])
+      garage.fixed_storage << bike_fixed_one
+      expect(garage).to receive(:remove_fixed_bikes)
+      subject.collect_working_bikes(garage)
+    end
+  end
+
+  describe "#distribute_working_bikes" do
+    xit "removes the broken bikes from the van storage" do
+      bike_broken_one = double("Bike_one", :working? => false)
+      bike_broken_two = double("Bike_two", :working? => false)
+      docking_one = double("DockingStation", :docking_bay => [])
+      subject.storage << bike_broken_one << bike_broken_two
+      expect{ subject.distribute_working_bikes(docking_one) }.to change{ subject.storage.count }.by(-2)
     end
   end
 end

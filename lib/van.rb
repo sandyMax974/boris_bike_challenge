@@ -17,11 +17,16 @@ attr_reader :storage
 
   def collect_working_bikes(garage)
     garage.fixed_storage.each { |bike| @storage << bike if bike.working? }
+    garage.remove_fixed_bikes
   end 
 
-private
+  # def distribute_working_bikes
+
+  # end
+
+  private
   def remove_broken_bikes
     @storage.delete_if { |bike| !bike.working? }
   end
-  
+
 end
