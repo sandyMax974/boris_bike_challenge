@@ -10,4 +10,14 @@ attr_reader :storage
     docking_station.remove_broken_bike
   end
 
+  def deliver_broken_bikes(garage)
+    @storage.each { |bike| garage.broken_storage << bike if !bike.working? }
+    remove_broken_bikes
+  end
+
+private
+  def remove_broken_bikes
+    @storage.delete_if { |bike| !bike.working? }
+  end
+  
 end

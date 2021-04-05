@@ -17,4 +17,23 @@ describe Van do
       subject.collect_broken_bikes(docking_one)
     end
   end
+
+  describe "deliver_broken_bikes" do
+    it "remove the broken bikesfrom the van storage" do
+      bike_broken_one = double("Bike_one", :working? => false)
+      bike_broken_two = double("Bike_two", :working? => false)
+      garage = double("Garage", :broken_storage => [])
+      subject.storage << bike_broken_one << bike_broken_two
+      expect{ subject.deliver_broken_bikes(garage) }.to change{ subject.storage.count }.by(-2)
+    end
+    it "add the broken bikes to the garage broken storage" do
+      bike_broken_one = double("Bike_one", :working? => false)
+      bike_broken_two = double("Bike_two", :working? => false)
+      garage = double("Garage", :broken_storage => [])
+      subject.storage << bike_broken_one << bike_broken_two
+      expect(subject).to receive(:remove_broken_bikes)
+      subject.deliver_broken_bikes(garage)
+    end
+  end
+
 end

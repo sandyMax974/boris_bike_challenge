@@ -38,9 +38,10 @@ class DockingStation
     bike.broken
   end
 
-  def remove_broken_bike
+  def remove_broken_bikes
     dockingbay.delete_if { |bike| !bike.working? }
   end
+
 
 private
   def dockingbay
