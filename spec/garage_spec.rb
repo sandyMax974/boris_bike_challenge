@@ -1,6 +1,8 @@
 require 'garage'
 
 describe Garage do
+  let!(:working_bike) { double :bike, :working? => true }  
+  let!(:broken_bike) { double :bike, :working? => false, :fixing => 'fixed_bike' }  
 
   describe '#broken_storage' do
     it "contains all the broken bikes delivered by the van" do
@@ -16,17 +18,15 @@ describe Garage do
 
   describe "#repair_bike" do
     it "calls the fixing method on the bike" do
-      bike_broken = double("Bike", :working? => false) 
-      subject.broken_storage << bike_broken
-      expect(bike_broken).to receive(:fixing)
+      subject.broken_storage << broken_bike
+      expect(broken_bike).to receive(:fixing)
       subject.repair_bikes
     end
     it "moves the repaired bikes in the fixed storage" do
-      bike_broken = instance_double("Bike", :fixing => 'fixed_bike')
-      subject.broken_storage << bike_broken
+      subject.broken_storage << broken_bike
       subject.repair_bikes
       expect(subject.fixed_storage).to include('fixed_bike')
-      expect(subject.broken_storage).not_to include(bike_broken)
+      expect(subject.broken_storage).not_to include(broken_bike)
     end
   end 
 

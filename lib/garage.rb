@@ -17,6 +17,8 @@ attr_reader :broken_storage, :fixed_storage
     @broken_storage.clear
   end
 
+private 
+
   def receive_broken_bikes(bike)
     @broken_storage << bike if !bike.working?
   end
