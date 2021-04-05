@@ -15,4 +15,8 @@ class Garage
   def repair_bike(bike)
     bike.fixing
   end
+
+  def receive_broken_bikes(bike)
+    @broken_storage << bike if !bike.working?
+  end
 end 

@@ -11,7 +11,7 @@ attr_reader :storage
   end
 
   def deliver_broken_bikes(garage)
-    @storage.each { |bike| garage.broken_storage << bike if !bike.working? }
+    @storage.each { |bike| garage.receive_broken_bikes(bike) }
     remove_broken_bikes
   end
 

@@ -22,7 +22,7 @@ describe Van do
     it "remove the broken bikesfrom the van storage" do
       bike_broken_one = double("Bike_one", :working? => false)
       bike_broken_two = double("Bike_two", :working? => false)
-      garage = double("Garage", :broken_storage => [])
+      garage = double("Garage", :broken_storage => [], receive_broken_bikes: nil)
       subject.storage << bike_broken_one << bike_broken_two
       expect{ subject.deliver_broken_bikes(garage) }.to change{ subject.storage.count }.by(-2)
     end
@@ -32,6 +32,7 @@ describe Van do
       garage = double("Garage", :broken_storage => [])
       subject.storage << bike_broken_one << bike_broken_two
       expect(subject).to receive(:remove_broken_bikes)
+      expect(garage).to receive(:receive_broken_bikes).twice
       subject.deliver_broken_bikes(garage)
     end
   end
