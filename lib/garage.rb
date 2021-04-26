@@ -14,16 +14,20 @@ attr_reader :broken_storage, :fixed_storage
 
   def repair_bikes
     broken_storage.each { |bike| fixed_storage << bike.fixing }
-    @broken_storage.clear
+    remove_broken_bikes
   end
 
   def receive_broken_bikes(bike)
     @broken_storage << bike if !bike.working?
   end
 
-private 
-
   def remove_fixed_bikes
     @fixed_storage.clear
+  end
+
+private 
+
+  def remove_broken_bikes
+    @broken_storage.clear
   end
 end 

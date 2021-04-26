@@ -2,7 +2,7 @@
 
 ![language-ruby](https://img.shields.io/badge/language-ruby-red)
 ![version-2.6.5](https://img.shields.io/badge/version-2.6.5-lightgrey)
-![coverage-score](https://img.shields.io/badge/coverage-100%25-success)
+![coverage-score](https://img.shields.io/badge/coverage-98.6%25-success)
 
 ## Description
 The Boris Bikes programme will emulate emulate all the docking stations, bikes, and infrastructure (repair staff, and so on) required to make their dream a reality.
@@ -147,4 +147,38 @@ $ rspec
 # Dock and report a bike as broken
 [11] pry(main)> lower_marsh.report_broken(bike_002)
 => true
+
+# Dock a broken bike
+[4] pry(main)> lower_marsh.dock_bike(bike_002)
+=> [#<Bike:0x00007fecff1787e0 @broken_status=false>, #<Bike:0x00007fecff2d2ca8 @broken_status=true>]
+
+# Modify the docking station capacity
+[12] pry(main)> lower_marsh.modify_capacity=(10)
+=> 10
+
+# Create a new van and collects broken bike from a specified docking station
+[8] pry(main)> van_001 = Van.new
+=> #<Van:0x00007fed03062460 @storage=[]>
+[9] pry(main)> van_001.collect_broken_bikes(lower_marsh)
+=> [#<Bike:0x00007fecff1787e0 @broken_status=false>]
+
+
+# Create a new garage and deliver the broken bikes to the specified garage
+[8] pry(main)> garage_001 = Garage.new
+=> #<Garage:0x00007f8cb6045e80 @broken_storage=[], @fixed_storage=[]>
+[9] pry(main)> van_001.deliver_broken_bikes(garage_001)
+=> []
+
+
+# Repairs all the broken bikes stored at the garage an move to them to be collected
+[9] pry(main)> garage_001.repair_bikes
+=> []
+
+# Collect repaired bikes from the specified garage
+[7] pry(main)> van_001.collect_working_bikes(garage_001)
+=> []
+
+# Distribute fixed bikes to specified docking station until it's at capacity
+[12] pry(main)> van_001.distribute_working_bikes(lower_marsh)
+=> []
 ```

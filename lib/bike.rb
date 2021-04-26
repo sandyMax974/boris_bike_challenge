@@ -14,6 +14,7 @@ attr_accessor :broken_status
 
   def fixing(status = false)
     @broken_status = status
+    self
   end
 
 end 
