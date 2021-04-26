@@ -35,7 +35,6 @@ describe Van do
   end
 
   describe "#collect_working_bikes" do
-
     before (:each) do
       garage.fixed_storage << working_bike
     end
@@ -51,12 +50,14 @@ describe Van do
   end
 
   describe "#distribute_working_bikes" do
-    it "removes the working bikes from the van storage" do
+    before (:each) do
       subject.storage << working_bike << working_bike_two
+    end
+
+    it "removes the working bikes from the van storage" do
       expect{ subject.distribute_working_bikes(docking) }.to change{ subject.storage.count }.by(-2)
     end
     it "stops delivering bikes to docking_bay if docking is full" do
-      subject.storage << working_bike
       expect{ subject.distribute_working_bikes(full_docking) }.not_to change{ subject.storage.count }
     end  
   end
