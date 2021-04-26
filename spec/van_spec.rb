@@ -20,12 +20,14 @@ describe Van do
   end
 
   describe "#deliver_broken_bikes" do
-    it "remove the broken bikesfrom the van storage" do
+    before (:each) do
       subject.storage << broken_bike << broken_bike_two
+    end
+
+    it "remove the broken bikes from the van storage" do
       expect{ subject.deliver_broken_bikes(garage) }.to change{ subject.storage.count }.by(-2)
     end
     it "add the broken bikes to the garage broken storage" do
-      subject.storage << broken_bike << broken_bike_two
       expect(subject).to receive(:remove_broken_bikes)
       expect(garage).to receive(:receive_broken_bikes).twice
       subject.deliver_broken_bikes(garage)
@@ -50,7 +52,7 @@ describe Van do
       subject.storage << working_bike << working_bike_two
       expect{ subject.distribute_working_bikes(docking) }.to change{ subject.storage.count }.by(-2)
     end
-    xit "stops delivering bikes to docking_bay if docking is full" do
+    it "stops delivering bikes to docking_bay if docking is full" do
       subject.storage << working_bike
       expect{ subject.distribute_working_bikes(full_docking) }.not_to change{ subject.storage.count }
     end  
