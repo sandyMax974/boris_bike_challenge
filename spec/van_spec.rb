@@ -35,13 +35,16 @@ describe Van do
   end
 
   describe "#collect_working_bikes" do
-    it "adds the working bikes to the van storage" do
+
+    before (:each) do
       garage.fixed_storage << working_bike
+    end
+
+    it "adds the working bikes to the van storage" do
       allow(garage).to receive(:remove_fixed_bikes)
       expect{ subject.collect_working_bikes(garage) }.to change{ subject.storage.count }.by(1)
     end
     it "removes the working bikes from the garage fixed storage" do
-      garage.fixed_storage << working_bike
       expect(garage).to receive(:remove_fixed_bikes)
       subject.collect_working_bikes(garage)
     end
