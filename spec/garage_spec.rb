@@ -17,13 +17,15 @@ describe Garage do
   end
 
   describe "#repair_bike" do
-    it "calls the fixing method on the bike" do
+    before (:each) do 
       subject.broken_storage << broken_bike
+    end 
+
+    it "calls the fixing method on the bike" do
       expect(broken_bike).to receive(:fixing)
       subject.repair_bikes
     end
     it "moves the repaired bikes in the fixed storage" do
-      subject.broken_storage << broken_bike
       subject.repair_bikes
       expect(subject.fixed_storage).to include('fixed_bike')
       expect(subject.broken_storage).not_to include(broken_bike)

@@ -68,9 +68,6 @@ let!(:broken_bike) { double :bike, :working? => false }
     end
   end
 
-  describe "#remove_broken_bikes" do
-  end
-
   describe "#receive_working_bikes" do
     it "adds working bikes to the docking_bay" do
       expect{ subject.receive_working_bikes(working_bike) }.to change{ subject.docking_bay.count}.by(1)
