@@ -42,6 +42,10 @@ class DockingStation
     @docking_bay << bike if bike.working? && !at_capacity?
   end
   
+  def remove_broken_bikes
+    @docking_bay.delete_if { |bike| !bike.working? }
+  end
+
 private
   def dockingbay
     @docking_bay
@@ -62,9 +66,5 @@ private
   def find_bike
     selected_bike = @docking_bay.find(&:working?)
     @docking_bay.index(selected_bike)
-  end
-
-  def remove_broken_bikes
-    dockingbay.delete_if { |bike| !bike.working? }
   end
 end

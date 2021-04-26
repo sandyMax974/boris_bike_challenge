@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-04-26T12:30:30+01:00">2021-04-26T12:30:30+01:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-04-26T13:03:13+01:00">2021-04-26T13:03:13+01:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -932,34 +932,23 @@
 
             
 
-            <code class="ruby">private</code>
+            <code class="ruby">  def remove_broken_bikes</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="46">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="46">
+            
             
 
             
 
-            <code class="ruby">  def dockingbay</code>
+            <code class="ruby">    @docking_bay.delete_if { |bike| !bike.working? }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="31" data-linenumber="47">
-            <span class="hits">31</span>
-            
-
-            
-
-            <code class="ruby">    @docking_bay</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="48">
+          <li class="never" data-hits="" data-linenumber="47">
             
             
 
@@ -970,7 +959,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="49">
+          <li class="never" data-hits="" data-linenumber="48">
             
             
 
@@ -981,24 +970,35 @@
         </div>
       
         <div>
+          <li class="covered" data-hits="1" data-linenumber="49">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">private</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="covered" data-hits="1" data-linenumber="50">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def no_bike_available_error</code>
+            <code class="ruby">  def dockingbay</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="51">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="31" data-linenumber="51">
+            <span class="hits">31</span>
             
 
             
 
-            <code class="ruby">    fail &quot;No bikes available at docking&quot;</code>
+            <code class="ruby">    @docking_bay</code>
           </li>
         </div>
       
@@ -1031,7 +1031,7 @@
 
             
 
-            <code class="ruby">  def no_dock_available_error</code>
+            <code class="ruby">  def no_bike_available_error</code>
           </li>
         </div>
       
@@ -1042,7 +1042,7 @@
 
             
 
-            <code class="ruby">    fail &quot;No space available at docking&quot;</code>
+            <code class="ruby">    fail &quot;No bikes available at docking&quot;</code>
           </li>
         </div>
       
@@ -1075,18 +1075,18 @@
 
             
 
-            <code class="ruby">  def dockingbay_count</code>
+            <code class="ruby">  def no_dock_available_error</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="28" data-linenumber="59">
-            <span class="hits">28</span>
+          <li class="covered" data-hits="1" data-linenumber="59">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    @docking_bay.count</code>
+            <code class="ruby">    fail &quot;No space available at docking&quot;</code>
           </li>
         </div>
       
@@ -1119,34 +1119,23 @@
 
             
 
-            <code class="ruby">  def find_bike</code>
+            <code class="ruby">  def dockingbay_count</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="63">
-            <span class="hits">3</span>
+          <li class="covered" data-hits="28" data-linenumber="63">
+            <span class="hits">28</span>
             
 
             
 
-            <code class="ruby">    selected_bike = @docking_bay.find(&amp;:working?)</code>
+            <code class="ruby">    @docking_bay.count</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="64">
-            <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">    @docking_bay.index(selected_bike)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="65">
+          <li class="never" data-hits="" data-linenumber="64">
             
             
 
@@ -1157,7 +1146,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="66">
+          <li class="never" data-hits="" data-linenumber="65">
             
             
 
@@ -1168,24 +1157,35 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="67">
+          <li class="covered" data-hits="1" data-linenumber="66">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def remove_broken_bikes</code>
+            <code class="ruby">  def find_bike</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="68">
+          <li class="covered" data-hits="3" data-linenumber="67">
+            <span class="hits">3</span>
             
+
+            
+
+            <code class="ruby">    selected_bike = @docking_bay.find(&amp;:working?)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="68">
+            <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">    dockingbay.delete_if { |bike| !bike.working? }</code>
+            <code class="ruby">    @docking_bay.index(selected_bike)</code>
           </li>
         </div>
       
@@ -1458,34 +1458,12 @@
 
             
 
-            <code class="ruby">private </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="21">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="22">
-            <span class="hits">1</span>
-            
-
-            
-
             <code class="ruby">  def receive_broken_bikes(bike)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="23">
+          <li class="missed" data-hits="0" data-linenumber="21">
             
             
 
@@ -1496,13 +1474,35 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="24">
+          <li class="never" data-hits="" data-linenumber="22">
             
             
 
             
 
             <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="24">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">private </code>
           </li>
         </div>
       
@@ -1698,7 +1698,7 @@
 
             
 
-            <code class="ruby">    docking_station.remove_broken_bike</code>
+            <code class="ruby">    docking_station.remove_broken_bikes</code>
           </li>
         </div>
       
@@ -3703,7 +3703,7 @@
 
             
 
-            <code class="ruby">  let!(:docking) { double :docking_station, :docking_bay =&gt; [working_bike, broken_bike], :receive_working_bikes =&gt; working_bike_two, at_capacity?: false, remove_broken_bike: true }</code>
+            <code class="ruby">  let!(:docking) { double :docking_station, :docking_bay =&gt; [working_bike, broken_bike], :receive_working_bikes =&gt; working_bike_two, at_capacity?: false, remove_broken_bikes: true }</code>
           </li>
         </div>
       
@@ -3802,7 +3802,7 @@
 
             
 
-            <code class="ruby">      expect(docking).to receive(:remove_broken_bike)</code>
+            <code class="ruby">      expect(docking).to receive(:remove_broken_bikes)</code>
           </li>
         </div>
       

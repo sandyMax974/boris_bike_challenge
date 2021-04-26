@@ -71,7 +71,7 @@ I'd like vans to take broken bikes from docking stations and deliver them to gar
 
 As a maintainer of the system,
 So that I can manage broken bikes and not disappoint users,
-I'd like vans to collect working bikes from garages and distribute them to docking stations.
+I'd like vans to collect working bikes from garages and distribute them to docking stations.√
 ```
 
 ## Planning & Modelling
@@ -104,11 +104,47 @@ I'd like vans to collect working bikes from garages and distribute them to docki
 |          | #collect_working_bikes | Garage |
 |          | #deliver_working_bikes | DockingStation |
 
-## How to run
+## Installation
+
+### How to install
 ```
 $ git clone git@github.com:sandyMax974/boris_bike_challenge.git
 $ cd boris_bike_challenge
 $ bundle install
 $ pry
 [1] pry(main)> require './lib/dockingStation.rb'
+```
+### How to test
+```
+$ rspec
+```
+### How to run
+```
+# Create a new docking station
+[2] pry(main)> lower_marsh = DockingStation.new
+=> #<DockingStation:0x00007fc51f119888 @capacity=20, @docking_bay=[]>
+
+# Create a new working bike
+[3] pry(main)> bike_001 = Bike.new
+=> #<Bike:0x00007fc52202c620 @broken_status=false>
+
+# Dock a bike
+[4] pry(main)> lower_marsh.dock_bike(bike_001)
+=> [#<Bike:0x00007fc52202c620 @broken_status=false>]
+
+# Release a working bike
+[6] pry(main)> lower_marsh.release_bike
+=> #<Bike:0x00007fc52202c620 @broken_status=false>
+
+# Check if a bike is broken
+[7] pry(main)> bike_001.working?
+=> true
+
+# Check if a docking station has any bikes
+[8] pry(main)> lower_marsh.has_bikes?
+=> false
+
+# Dock and report a bike as broken
+[11] pry(main)> lower_marsh.report_broken(bike_002)
+=> true
 ```

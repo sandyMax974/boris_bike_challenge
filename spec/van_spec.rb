@@ -5,7 +5,7 @@ describe Van do
   let!(:working_bike_two) { double :bike, :working? => true }  
   let!(:broken_bike) { double :bike, :working? => false }  
   let!(:broken_bike_two) { double :bike, :working? => false }  
-  let!(:docking) { double :docking_station, :docking_bay => [working_bike, broken_bike], :receive_working_bikes => working_bike_two, at_capacity?: false, remove_broken_bike: true }
+  let!(:docking) { double :docking_station, :docking_bay => [working_bike, broken_bike], :receive_working_bikes => working_bike_two, at_capacity?: false, remove_broken_bikes: true }
   let!(:garage) { double :garage, :broken_storage => [], :fixed_storage => [], receive_broken_bikes: true }
   let!(:full_docking) { double :docking_station, at_capacity?: true, :receive_working_bikes => true }
   
@@ -14,7 +14,7 @@ describe Van do
       expect{ subject.collect_broken_bikes(docking) }.to change{ subject.storage.count }.by(1)
     end
     it "removes the broken bikes from the docking station" do
-      expect(docking).to receive(:remove_broken_bike)
+      expect(docking).to receive(:remove_broken_bikes)
       subject.collect_broken_bikes(docking)
     end
   end

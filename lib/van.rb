@@ -7,7 +7,7 @@ attr_reader :storage
 
   def collect_broken_bikes(docking_station)
     docking_station.docking_bay.each { |bike| @storage << bike if !bike.working? }
-    docking_station.remove_broken_bike
+    docking_station.remove_broken_bikes
   end
 
   def deliver_broken_bikes(garage)
